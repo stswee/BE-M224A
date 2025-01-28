@@ -1,0 +1,39 @@
+12-lead and 3-lead ECGs recorded in different MRI scanners (1T to 7T)
+
+Abstract
+
+ECG signals acquired in the MRI scanners are superimposed by the magnetohydrodynamic (MHD) effect, which is caused by the interaction of the blood flow (moving ions) and the MRI’s high static magnetic field. The MHD effect prevents a detailed morphological analysis of the ECG (e.g. of the P wave, ST segment or the T wave) during MRI exams. 
+The ECG signals were acquired in various MRI scanners with magnetic field strengths ranging from 1T up to 7T. All signals were manually annotated (QRS complex). 
+
+
+Background
+
+The purpose of this dataset is to evaluate ECG signals affected by the MHD effect during MRI exams. A potential goal is to increase the diagnostic value of an ECG acquired during MRI exams. This is especially important for critical care patients or during MRI guided intervention. This could be achieved by improving existing signal processing techniques aiming to separate ECG and MHD signal components. A main challenge in the development and validation of such algorithms is the lack of a reference ECG while the subject is inside the MRI scanner. To cope with this problem, reference ECGs were acquired outside the scanner assuming stationarity of the ECG signals. 
+
+
+Methods
+
+ECG signals were acquired using two different ECG recorders:
+1) a 12-lead Holter ECG (CardioMem 3000,Getemed AG, Germany) with a sampling rate of 1024 Hz, an input voltage range of +/-6mV, a resolution of 12 bit and an analogue bandwidth of 0.05 Hz to 100 Hz.
+2) the wireless 3-lead ECG device of an MRI-conditional patient monitoring system (Tesla M3, MIPM GmbH, Germany) with a sampling rate of 1024Hz, an input voltage range of +/-2.4mV and a resolution of 24 bit.
+ECGs were acquired in different MRI scanners with static magnetic field strengths of 1T, 3T and 7T without imaging, i.e. in the absence of the switched gradient and the high frequency magnetic fields. Hence, the ECG signals are only distorted by the MHD effect. 
+The database comprises 43 records from 23 different subjects with an overall length of 203 min. The subjects had an average age of 27.1 +/-3.2 years, an average weight of 73.8 +/- 13.1 kg and a height of 181.7+/-10.5 cm. Physicians or ECG experts manually annotated the QRS complexes. No distinction was made between QRS complexes occurring in normal or disturbed heart rhythm, e.g. caused by ectopic beats.
+Most of the datasets were acquired during spontaneous, free breathing. For certain datasets, breath-hold commands were applied asking the subjects to hold their breath for several seconds in order to avoid or reduce respiratory modulations of the ECG and MHD signals. This is noted in the header files.
+
+
+Data Description
+
+All files are provided in standard WFDB format. The sampling rate is 1024 Hz. The filenames specify the subject number, the magnetic field strength given in Tesla (T), and the measurement position inside the MRI scanner: head first (Hf), feet first (Ff), Pro (prone), Sup (supine) or Out (outside the scanner). 
+The header file *.hea of each record contains the following information: technical parameters of the MR scanner (field strength, manufacturer, field orientation), ECG hardware parameters and information about the subject (sex, age, weight, height, position in the scanner, type of respiration, ECG details where applicable). For most of the subjects, a reference ECG signal was recorded outside the MRI scanner. 
+QRS complexes were manually annotated for each record and are provided in the *.qrs file.
+There is one specialty about the orientation of the static magnetic field B0 of the MRI scanner. For most scanners available nowadays, the B0 field has a horizontal orientation, i.e. the field points from head to feet (or vice versa) while the subject or patient is inside the scanner. The 1T scanner used for the acquisition of this dataset was a (now discontinued) open field scanner where the B0 field has a vertical orientation pointing from dorsal to ventral (i.e. from back to chest). This has an important influence of the morphology and magnitude of the MHD effect. Hence, measurement in the 1T scanner were performed in the prone and supine position (always head first) to invert the MHD effect whereas for all other scanners (1.5T, 3T and 7T), measurements were performed in head first and feet first positions (always supine).
+
+Examples for file names: 
+ECGMRI3T04Ff -> 3T, Subject #04, Feet first position
+ECGMRI3T04Out -> 3T, Subject #04, Outside scanner (reference ECG)
+
+
+Usage Notes
+
+The ECG MRI database was created for the purpose of developing and evaluating algorithms for filtering or separating ECG and MHD signals enabling an improved and more reliable patient monitoring during MRI exams. It shall also stimulate the further analysis of the MHD effect. 
+The dataset is free to all researchers. If you are using this dataset for your publication, please cite the corresponding article published at the 2017’s CinC conference. If you have any questions or look for further collaborations on this topic please contact the author. 
